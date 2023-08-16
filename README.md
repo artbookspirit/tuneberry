@@ -150,14 +150,14 @@ Detailed descriptions of the features can be found in later sections.
 | `:blocking`        | false                      | Turns on [blocking mode](#blocking-mode).                                             |
 | `:max-poll`        | 5                          | The maximum number of polls in blocking mode.                                         |
 | `:poll-delays-fn`  | `(100 200 400 ...)`        | Returns a lazy sequence of wait intervals between successive polls in blocking mode.  |
-| `:retry`           | `[500 502 503]`            | A list of [retry](#retries) criteria or false/nil to disable retries.                 |
+| `:retry`           | `[500 502 503]`            | A list of [retry](#retries) criteria or `false`/`nil` to disable retries.                 |
 | `:max-retry`       | 3                          | The maximum number of retries.                                                        |
 | `:retry-delays-fn` | `(500 1000 2000 ...)`      | Returns a lazy sequence of wait intervals between successive retries.                 |
 | `:smart`           | true                       | Turns on the [smart](#postprocessing-with-smart-sel-and-post) mode.                   |
 | `:sel`             | N/A                        | Turns on the `:sel` [postprocessing](#postprocessing-with-smart-sel-and-post).        |
-| `:sel-check`       | true                       | Specifies whether to return an error if the path passed with `:sel` returns nil.      |
+| `:sel-check`       | true                       | Specifies whether to return an error if the path passed with `:sel` returns `nil`.      |
 | `:post`            | N/A                        | Turns on the `:post` [postprocessing](#postprocessing-with-smart-sel-and-post).       |
-| `:post-check`      | true                       | Specifies whether to return an error if the function passed with `:post` returns nil. |
+| `:post-check`      | true                       | Specifies whether to return an error if the function passed with `:post` returns `nil`. |
 
 ## Error handling
 
@@ -172,7 +172,7 @@ Errors may come from a variety of sources, such as:
 - [token refresh](#setups-with-token-refresh) errors,
 - limit of polls reached in [blocking mode](#blocking-mode),
 - limit of [retries](#retries) reached,
-- a nil [postprocessing](#postprocessing-with-smart-sel-and-post) result.
+- a `nil` [postprocessing](#postprocessing-with-smart-sel-and-post) result.
 
 > [!NOTE]
 > [ExceptionInfo](https://clojuredocs.org/clojure.core/ex-info)
@@ -216,7 +216,7 @@ the _Tuneberry_'s version of the commonly used `<?` macro[^4].
 
 `<?` works exactly like `<!` except that if the value from the channel turns out
 to be an instance of `js/Error`, it immediately throws it. This allows
-you to use **usual try/catch** in the context of asynchronous channels.
+you to use **a regular try/catch** in the context of asynchronous channels.
 
 The following short program, inspired by the fact that we still have at hand
 a track listing for Katie Melua's album, checks if there is
@@ -442,9 +442,9 @@ or the use of `get-in` in a single expression together with `search` and `<?`,
 which obfuscates the code to a great extent.
 
 Since we usually use key sequences that always exist and contain some data,
-an error is returned when the sequence passed to `:sel` returns nil (see
+an error is returned when the sequence passed to `:sel` returns `nil` (see
 example in [Error handling](#error-handling)).
-This can be disabled by setting the `:sel-check` option to false.
+This can be disabled by setting the `:sel-check` option to `false`.
 
 **The `:post` option** is very similar to `:sel`, except that it **allows you to specify
 any mapping function** that will be executed on the API response
