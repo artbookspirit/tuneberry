@@ -108,7 +108,7 @@ They are kept inside the `tuneberry` object and may be specified **during its
 creation**:
 
 ```clojure
-(def tb (tuneberry token {:blocking true, :smart false, :max-retry 5}))
+(def berry (tuneberry token {:blocking true, :smart false, :max-retry 5}))
 ```
 
 Unspecified options are set to their default values, if such exist
@@ -307,7 +307,7 @@ in the application code anyway.
 To enable the blocking mode, simply call:
 
 ```clojure
-(def tb (tuneberry token :blocking true))
+(tuneberry token :blocking true)
 ```
 
 If a given function supports the blocking mode, the release conditions can be
