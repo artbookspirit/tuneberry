@@ -1,0 +1,17 @@
+;; shadow-cljs configuration
+{:source-paths
+ ["src/dev"
+  "src/main"
+  "src/test"]
+
+ :dependencies
+ [[cljs-http "0.1.46"]
+  [com.lambdaisland/glogi "1.3.169"]]
+
+ ;; tests are served via http://127.0.0.1:8021
+ :dev-http {8021 {:root "out/test"
+                  :host "127.0.0.1"}}
+ :builds
+ {:test {:target   :browser-test
+         :test-dir "out/test"
+         :runner-ns tuneberry.test.runner}}}
