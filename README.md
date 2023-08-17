@@ -6,6 +6,12 @@
 [Spotify Web API](https://developer.spotify.com/documentation/web-api) with
 retries and blocking mode.
 
+> [!IMPORTANT]
+> Although currently mainly the _Player_ and _Search_ endpoints are covered, the
+> library is fully operational. Expect more soon. Need a specific endpoint
+> not covered? Report [an issue](https://github.com/artbookspirit/tuneberry/issues)
+> or create a [pull request](https://github.com/artbookspirit/tuneberry/pulls).
+
 ## Quickstart
 
 To display your Spotify user ID, run the code below:
@@ -144,19 +150,19 @@ Detailed descriptions of the features can be found in later sections.
 
 ### Options list
 
-| Option             | Default value              | Description                                                                           |
-|--------------------|----------------------------|---------------------------------------------------------------------------------------|
-| `:api-url`         | https://api.spotify.com/v1 | Common prefix of all Spotify Web API endpoints.                                       |
-| `:blocking`        | false                      | Turns on [blocking mode](#blocking-mode).                                             |
-| `:max-poll`        | 5                          | The maximum number of polls in blocking mode.                                         |
-| `:poll-delays-fn`  | `(100 200 400 ...)`        | Returns a lazy sequence of wait intervals between successive polls in blocking mode.  |
-| `:retry`           | `[500 502 503]`            | A list of [retry](#retries) criteria or `false`/`nil` to disable retries.                 |
-| `:max-retry`       | 3                          | The maximum number of retries.                                                        |
-| `:retry-delays-fn` | `(500 1000 2000 ...)`      | Returns a lazy sequence of wait intervals between successive retries.                 |
-| `:smart`           | true                       | Turns on the [smart](#postprocessing-with-smart-sel-and-post) mode.                   |
-| `:sel`             | N/A                        | Turns on the `:sel` [postprocessing](#postprocessing-with-smart-sel-and-post).        |
+| Option             | Default value              | Description                                                                             |
+|--------------------|----------------------------|-----------------------------------------------------------------------------------------|
+| `:api-url`         | https://api.spotify.com/v1 | Common prefix of all Spotify Web API endpoints.                                         |
+| `:blocking`        | false                      | Turns on [blocking mode](#blocking-mode).                                               |
+| `:max-poll`        | 5                          | The maximum number of polls in blocking mode.                                           |
+| `:poll-delays-fn`  | `(100 200 400 ...)`        | Returns a lazy sequence of wait intervals between successive polls in blocking mode.    |
+| `:retry`           | `[500 502 503]`            | A list of [retry](#retries) criteria or `false`/`nil` to disable retries.               |
+| `:max-retry`       | 3                          | The maximum number of retries.                                                          |
+| `:retry-delays-fn` | `(500 1000 2000 ...)`      | Returns a lazy sequence of wait intervals between successive retries.                   |
+| `:smart`           | true                       | Turns on the [smart](#postprocessing-with-smart-sel-and-post) mode.                     |
+| `:sel`             | N/A                        | Turns on the `:sel` [postprocessing](#postprocessing-with-smart-sel-and-post).          |
 | `:sel-check`       | true                       | Specifies whether to return an error if the path passed with `:sel` returns `nil`.      |
-| `:post`            | N/A                        | Turns on the `:post` [postprocessing](#postprocessing-with-smart-sel-and-post).       |
+| `:post`            | N/A                        | Turns on the `:post` [postprocessing](#postprocessing-with-smart-sel-and-post).         |
 | `:post-check`      | true                       | Specifies whether to return an error if the function passed with `:post` returns `nil`. |
 
 ## Error handling
@@ -469,7 +475,8 @@ as described on the Spotify Web
 API [Authorization page](https://developer.spotify.com/documentation/web-api/concepts/authorization).
 _Tuneberry_ is tested with the most
 reliable [Authorization Code with PKCE](https://developer.spotify.com/documentation/web-api/tutorials/code-pkce-flow),
-but should also work with other OAuth flows (if not, please let me know).
+but should also work with other OAuth flows (if not, please
+[let me know](https://github.com/artbookspirit/tuneberry/issues)).
 
 The builder function below called `make-token-fn` creates a token function
 that is used in _Tuneberry_ tests:
