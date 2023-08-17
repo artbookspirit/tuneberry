@@ -334,7 +334,7 @@ The `:retry` option contains a list of retry criteria, each being one of:
   match a substring of the error message, taken from the http body.
 
 If any of the criteria is satisfied, a failed API function call
-is be retried up to `:max-retry` times. After that, another `ExceptionInfo`
+is be retried up to `:max-retry` times. After that, an `ExceptionInfo`
 object with message `retry limit reached` is returned.
 
 > [!NOTE]
@@ -346,28 +346,28 @@ object with message `retry limit reached` is returned.
 > See [below](#token-refresh-errors-and-retries) how to make token refresh
 > errors also cause API functions' retries.
 
-For illustrative purposes, let's break the access token, enable retries for
-the `401` response code and show the result of reaching the retry limit:
+For illustrative purposes, let's break the API url once again, add retries for
+the `404` response code and show the result of reaching the retry limit:
 
 ```clojure
 (require
   '[cljs.core.async :refer [<! go]]
-  '[tuneberry.core :refer [tuneberry]]
   '[tuneberry.player :as p])
 
 (go
-  (let [tb (tuneberry "not-a-token")
-        retry-criteria [500 502 503 [401 #"(?i)invalid.+token"]]
-        e (<! (p/get-playback-state tb :o/retry retry-criteria))]
+  (let [e (<! (p/get-playback-state
+                tb
+                :o/api-url "https://api.spotify.com/meh"
+                :o/retry [500 502 503 [404 #"(?i).*not\s+found"]]))]
     (println "message:" (ex-message e))
     (println "number of attempts:" (-> e ex-data :nr-attempts))
-    (println "last result message:" (-> e ex-data :last-result ex-message))))
+    (println "last http error:" (-> e ex-data :last-result ex-message))))
 ```
 
 ```
 message: retry limit reached
 number of attempts: 4
-last result message: HTTP 401: Invalid access token
+last http error: HTTP 404: Service not found
 ```
 
 If you want to disable retries altogether, set `:retry` to `false` or `nil`.
@@ -519,7 +519,7 @@ Using the above builder is pretty straightforward:
 
 It is assumed that the access token returned by the token function will
 give access to the set of [scopes](https://developer.spotify.com/documentation/web-api/concepts/scopes)
-required by the user. As with token lifetimes, _Tuneberry_ intentionally
+required by the user. As with token lifetimes, _Tuneberry_ deliberately
 does not control authorization scopes explicitly.
 
 ### Token refresh errors and retries
@@ -636,7 +636,7 @@ After executing `npx shadow-cljs watch test` and opening http://127.0.0.1:8021
 in the browser, in a different terminal run:
 
 ```
-shadow-cljs cljs-repl test
+npx shadow-cljs cljs-repl test
 ```
 
 It's good to keep the web console open for logs and network errors.
