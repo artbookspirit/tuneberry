@@ -1,3 +1,6 @@
+
+![tuneberry image](assets/tuneberry.jpg)
+
 # Tuneberry
 
 [![Clojars Project](https://img.shields.io/clojars/v/com.github.artbookspirit/tuneberry.svg)](https://clojars.org/com.github.artbookspirit/tuneberry)
@@ -646,6 +649,12 @@ It's good to keep the web console open for logs and network errors.
 Copyright (C) 2023 Piotr Bartosik
 
 Distributed under the Eclipse Public License, the same as Clojure.
+
+Photo
+by <a href="https://unsplash.com/@jeremydgreat?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">
+Jeremy Ricketts</a>
+on <a href="https://unsplash.com/photos/h4zs8fbybq4?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">
+Unsplash</a>.
 
 [^1]: _Tuneberry_ returns modified result maps from [cljs-http](https://github.com/r0man/cljs-http).
 

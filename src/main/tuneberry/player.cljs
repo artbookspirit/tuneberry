@@ -2,7 +2,7 @@
   (:require [tuneberry.helpers.framework :refer [request!]]))
 
 (defn get-user-queue
-  "Return the contents of the user's queue. No params.
+  "Returns the contents of the user's queue. No params.
 
   If there are no active devices, the returned queue will be empty. After
   transferring playback to a device or modifying the queue, it takes some time
