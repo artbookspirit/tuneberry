@@ -8,6 +8,10 @@ This project uses [Semantic Versioning](https://semver.org/).
 
 - This changelog.
 
+### Changed
+
+- Bump _shadow-cljs_ dev dependency to 2.25.2.
+
 ## 1.0.0 - 2023.08.17 (initial version)
 
 ### Added
