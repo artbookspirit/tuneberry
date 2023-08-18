@@ -1,4 +1,3 @@
-
 ![tuneberry image](assets/tuneberry.jpg)
 
 # Tuneberry
@@ -7,7 +6,7 @@
 
 [ClojureScript](https://clojurescript.org/) bindings for
 [Spotify Web API](https://developer.spotify.com/documentation/web-api) with
-retries and blocking mode.
+retries, blocking mode and a tasty name.
 
 > [!IMPORTANT]
 > Although currently mainly the _Player_ and _Search_ endpoints are covered, the
