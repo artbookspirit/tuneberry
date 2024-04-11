@@ -235,7 +235,7 @@
 
     https://developer.spotify.com/documentation/web-api/reference/set-repeat-mode-on-users-playback"
     [tb & {:keys [state] :as keyvals}]
-    {:pre [(boolean? state)]}
+    {:pre [(string? state)]}
     (request! tb
               :method :put
               :path "/me/player/repeat"
