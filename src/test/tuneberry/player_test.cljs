@@ -117,3 +117,14 @@
       (<? (p/toggle-playback-shuffle @tst/tb :state false))
       (is (= false (:shuffle_state (<? (p/get-playback-state @tst/tb)))))
       (done))))
+
+(deftest set-repeat-mode-test
+  (async done
+    (go
+      (<? (p/set-repeat-mode @tst/tb :state "track"))
+      (is (= "track" (:repeat_state (<? (p/get-playback-state @tst/tb)))))
+      (<? (p/set-repeat-mode @tst/tb :state "context"))
+      (is (= "context" (:repeat_state (<? (p/get-playback-state @tst/tb)))))
+      (<? (p/set-repeat-mode @tst/tb :state "off"))
+      (is (= "off" (:repeat_state (<? (p/get-playback-state @tst/tb)))))
+      (done))))

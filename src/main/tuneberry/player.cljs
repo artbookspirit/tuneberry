@@ -221,3 +221,26 @@
             :opts {:block-until {:opts     {:sel [:shuffle_state]}
                                  :state-fn get-playback-state
                                  :pred     (partial = state)}}))
+
+(defn set-repeat-mode
+    "Sets repeat mode. Params: state, device_id.
+
+    state arguments: track, context, off.
+    track: repeats current track.
+    context: repeats current context.
+    off: turns repeat off.
+
+    Blocking: if enabled, no result is returned until the repeat mode (fetched
+    by additional API requests) has the same value as the state input parameter.
+
+    https://developer.spotify.com/documentation/web-api/reference/set-repeat-mode-on-users-playback"
+    [tb & {:keys [state] :as keyvals}]
+    {:pre [(boolean? state)]}
+    (request! tb
+              :method :put
+              :path "/me/player/repeat"
+              :msg :set-repeat-mode/setting
+              :mixed keyvals
+              :opts {:block-until {:opts     {:sel [:repeat_state]}
+                                   :state-fn get-playback-state
+                                   :pred     (partial = state)}}))
