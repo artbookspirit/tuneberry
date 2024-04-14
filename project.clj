@@ -1,4 +1,4 @@
-(defproject com.github.artbookspirit/tuneberry "1.1.0"
+(defproject com.github.artbookspirit/tuneberry "1.1.1-SNAPSHOT"
   :description "ClojureScript bindings for Spotify Web API."
   :url "https://github.com/artbookspirit/tuneberry"
   :license {:name "Eclipse Public License"

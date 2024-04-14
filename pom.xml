@@ -3,7 +3,7 @@
   <groupId>com.github.artbookspirit</groupId>
   <artifactId>tuneberry</artifactId>
   <packaging>jar</packaging>
-  <version>1.1.0</version>
+  <version>1.1.1-SNAPSHOT</version>
   <name>tuneberry</name>
   <description>ClojureScript bindings for Spotify Web API.</description>
   <url>https://github.com/artbookspirit/tuneberry</url>
@@ -17,7 +17,7 @@
     <url>https://github.com/artbookspirit/tuneberry</url>
     <connection>scm:git:git://github.com/artbookspirit/tuneberry.git</connection>
     <developerConnection>scm:git:ssh://git@github.com/artbookspirit/tuneberry.git</developerConnection>
-    <tag>ea09922f204e7be15095018861b030f9d7a6053c</tag>
+    <tag>f8b6d48a3af820438933e401f5a9355c18506453</tag>
   </scm>
   <build>
     <sourceDirectory>src/main</sourceDirectory>
