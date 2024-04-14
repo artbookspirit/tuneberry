@@ -12,13 +12,13 @@ This project uses [Semantic Versioning](https://semver.org/).
 
 ### Added
 
+- Coverage of the
+  [Set Repeat Mode](https://developer.spotify.com/documentation/web-api/reference/set-repeat-mode-on-users-playback)
+  endpoint from _Player_.
 - This changelog.
 
 ### Changed
 
-- Coverage of the
-  [Set Repeat Mode](https://developer.spotify.com/documentation/web-api/reference/set-repeat-mode-on-users-playback)
-  endpoint from _Player_.
 - Bump _shadow-cljs_ dev dependency to 2.25.2.
 
 ## 1.0.0 - 2023.08.17 (initial version)
